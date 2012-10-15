@@ -170,6 +170,7 @@ class Profile extends CActiveRecord
 
     public function getSuggestedFriends()
     {
+        //some tricky sql to get ids of suggested friends
         $sql = '
         SELECT id, COUNT(*) AS cnt FROM profile_has_friend f1 WHERE f1.friend_id IN
         (SELECT friend_id FROM profile_has_friend f2 WHERE f2.id = :uid)
@@ -181,6 +182,7 @@ class Profile extends CActiveRecord
         ';
 
         $command = Yii::app()->db->createCommand($sql);
+        //it's annoying feature(bug?) inside PDO (http://php.net/manual/en/pdo.prepare.php)
         $command->params = array(
             ':uid' => $this->id,
             ':uid2' => $this->id,
