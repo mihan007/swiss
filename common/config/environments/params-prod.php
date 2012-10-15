@@ -24,10 +24,10 @@
 return array(
 	'env.code' => 'prod',
 	// DB connection configurations
-	'db.name' => '',
-	'db.connectionString' => 'mysql:host={DATABASE-HOST};dbname={DATABASE-NAME}',
-	'db.username' => '{DATABASE-USERNAME}',
-	'db.password' => '{DATABASE-PASSWORD}',
+	'db.name' => 'swiss',
+	'db.connectionString' => 'mysql:host=127.0.0.1;dbname=swiss',
+	'db.username' => 'swiss',
+	'db.password' => 'swiss',
 
 	// test database {
 	'testdb.name' => '',
