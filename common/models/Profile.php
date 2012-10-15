@@ -190,7 +190,6 @@ class Profile extends CActiveRecord
         $ids = $command->queryColumn();
 
         $suggestedFriend = new CDbCriteria();
-        $suggestedFriend->distinct = true;
         $suggestedFriend->addInCondition('id', $ids);
 
         $dataProvider = new CActiveDataProvider('Profile', array(
