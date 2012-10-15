@@ -1,2 +1,1 @@
-swiss
-=====
+# Swiss Test Task
