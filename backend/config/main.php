@@ -31,7 +31,7 @@ $mainEnvConfiguration = file_exists($mainEnvFile) ? require($mainEnvFile) : arra
 
 return CMap::mergeArray(
 	array(
-		'name' => 'Clevertech Backend Boilerplate',
+		'name' => 'Test Project',
 		// @see http://www.yiiframework.com/doc/api/1.1/CApplication#basePath-detail
 		'basePath' => 'backend',
 		// set parameters

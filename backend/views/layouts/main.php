@@ -24,38 +24,17 @@
 <div class="container" id="page">
 	<?php $this->widget('bootstrap.widgets.TbNavbar', array(
 	'type' => 'inverse', // null or 'inverse'
-	'brand' => 'Project name',
-	'brandUrl' => '#',
+	'brand' => 'Test project',
+	'brandUrl' => '/',
 	'collapse' => true, // requires bootstrap-responsive.css
 	'items' => array(
 		array(
 			'class' => 'bootstrap.widgets.TbMenu',
 			'items' => array(
 				array('label' => 'Home', 'url' => array('/site/index')),
-				array('label' => 'About', 'url' => array('/site/page', 'view' => 'about')),
-				array('label' => 'Contact', 'url' => array('/site/contact')),
-				array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-				array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+				array('label' => 'Solution', 'url' => array('/site/solution'))),
 			),
 		),
-		'<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Search"></form>',
-		(!Yii::app()->user->isGuest) ? '<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>' : '',
-		array(
-			'class' => 'bootstrap.widgets.TbMenu',
-			'htmlOptions' => array('class' => 'pull-right'),
-			'items' => array(
-				array('label' => 'Link', 'url' => '#'),
-				'---',
-				array('label' => 'Dropdown', 'url' => '#', 'items' => array(
-					array('label' => 'Action', 'url' => '#'),
-					array('label' => 'Another action', 'url' => '#'),
-					array('label' => 'Something else here', 'url' => '#'),
-					'---',
-					array('label' => 'Separated link', 'url' => '#'),
-				)),
-			),
-		),
-	),
 )); ?>
 	<!-- mainmenu -->
 	<div class="container" style="margin-top:80px">

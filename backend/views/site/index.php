@@ -1,45 +1,28 @@
-<?php $this->pageTitle=Yii::app()->name; ?>
+<?php $this->pageTitle = Yii::app()->name; ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<?php Yii::app()->user->setFlash('success', '<strong>Well done!</strong> You have successfully created your Yii application.');?>
-<?php $this->widget('bootstrap.widgets.TbAlert'); ?>
-
-<p>You may change the content of this page by modifying the following two files:</p>
+<h1>Position: Backend Developer</h1>
+<h2>Task</h2>
+<p>The purpose of this task is to create a method of examining a social network. You are given data (data.php)
+    representing a group of people, in the form of a social graph. Each person listed has one or more connections to the
+    group.</p>
+<p>Come up with a database structure to store the information found in data.php,.</p>
+<p>You should then create a webpage which provides functionality to choose a person within the group
+    stored in the database and display the following information about this person:</p>
 <ul>
-	<li>View file: <tt><?php echo __FILE__; ?></tt></li>
-	<li>Layout file: <tt><?php echo $this->getLayoutFile('main'); ?></tt></li>
+    <li><i>Direct friends</i>: those people who are directly connected to the chosen user
+    <li><i>Friends of friends</i>: those who are two steps away from the chosen user but not directly connected
+        to the chosen user</li>
+    <li><i>Suggested friends</i>: people in the group who know 2 or more direct friends of the chosen user but
+        are not directly connected to the chosen user</li>
 </ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
-
-<?php
-
-$gridDataProvider = new CArrayDataProvider(array(
-	array('id'=>1, 'firstName'=>'Mark', 'lastName'=>'Otto', 'language'=>'CSS'),
-	array('id'=>2, 'firstName'=>'Jacob', 'lastName'=>'Thornton', 'language'=>'JavaScript'),
-	array('id'=>3, 'firstName'=>'Stu', 'lastName'=>'Dent', 'language'=>'HTML'),
-));
-
-?>
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
-	'type'=>'striped bordered condensed',
-	'dataProvider'=>$gridDataProvider,
-	'template'=>"{items}",
-	'columns'=>array(
-		array('name'=>'id', 'header'=>'#'),
-		array('name'=>'firstName', 'header'=>'First name'),
-		array('name'=>'lastName', 'header'=>'Last name'),
-		array('name'=>'language', 'header'=>'Language'),
-		array(
-			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'viewButtonUrl'=>'Yii::app()->controller->createUrl("view",array("id"=>$data["id"]))',
-			'updateButtonUrl'=>'Yii::app()->controller->createUrl("update",array("id"=>$data["id"]))',
-			'deleteButtonUrl'=>'Yii::app()->controller->createUrl("delete",array("id"=>$data["id"]))',
-			'htmlOptions'=>array('style'=>'width: 50px'),
-		),
-	),
-)); ?>
+<h2>Requirements</h2>
+<ul>
+    <li>Use OO PHP5 and any software design patterns you think are appropriate for the
+        implementation.</li>
+    <li>You may use 3rd party PHP frameworks/libraries.</li>
+</ul>
+<h2>Notes</h2>
+<p>This task is designed to give us an idea of how you approach programming problems. We will look at the structure of
+    any database tables you create, as well as the structure of your code and whether or not the solution you create is
+    extendable. We are looking at how efficient your algorithms are and also how you design the html and/or any
+    javascript you may use.</p>
