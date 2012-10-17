@@ -11,23 +11,19 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 <?php $this->endWidget(); ?>
 
-<?php if($this->beginCache('latestPost', array('dependency'=>$model->cacheFriendDependency))) { ?>
-    <?php if ($model->id>0): ?>
-        <h2>Direct Friends Of <?php echo $model->fullName; ?></h2>
+<?php if ($model->id>0): ?>
+    <?php if($this->beginCache('directFriends', array('dependency'=>$model->cacheFriendDependency))) { ?>
+    <h2>Direct Friends Of <?php echo $model->fullName; ?></h2>
         <?php $this->renderPartial('_friends', array('friends'=>$model->directFriends)); ?>
-    <?php endif ?>
-<?php $this->endCache(); } ?>
+    <?php $this->endCache(); } ?>
 
-<?php if($this->beginCache('latestPost', array('dependency'=>$model->cacheFriendDependency))) { ?>
-    <?php if ($model->id>0): ?>
+    <?php if($this->beginCache('friendsOfFriends', array('dependency'=>$model->cacheFriendDependency))) { ?>
         <h2>Friends Of Friends of <?php echo $model->fullName; ?></h2>
         <?php $this->renderPartial('_friends', array('friends'=>$model->friendsOfFriends)); ?>
-    <?php endif ?>
-<?php $this->endCache(); } ?>
+    <?php $this->endCache(); } ?>
 
-<?php if($this->beginCache('latestPost', array('dependency'=>$model->cacheFriendDependency))) { ?>
-    <?php if ($model->id>0): ?>
+    <?php if($this->beginCache('suggestedFriends', array('dependency'=>$model->cacheFriendDependency))) { ?>
         <h2>Suggested Friends of <?php echo $model->fullName; ?></h2>
         <?php $this->renderPartial('_friends', array('friends'=>$model->suggestedFriends)); ?>
-    <?php endif ?>
-<?php $this->endCache(); } ?>
+    <?php $this->endCache(); } ?>
+<?php endif ?>
