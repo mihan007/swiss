@@ -90,7 +90,7 @@ return CMap::mergeArray(
                 'enableParamLogging' => true,
                 'enableProfiling' => true,
                 'charset' => 'utf8',
-                'queryCacheID' => 'cache'
+                //'queryCacheID' => 'cache'
             ),
             'urlManager' => array(
                 'urlFormat' => 'path',

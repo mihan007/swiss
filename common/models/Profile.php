@@ -209,17 +209,6 @@ class Profile extends CActiveRecord
     }
 
     /**
-     * dependency to cache block of friends user
-     * @return CDbCacheDependency
-     */
-    public function getCacheFriendDependency($id)
-    {
-        //we are using dependency to invalidate cache as only one of records will be changed/deleted
-        $dependency = new CDbCacheDependency('SELECT AVG(updated) FROM profile_has_friend WHERE id=\''.$id.'\'');
-        return $dependency;
-    }
-
-    /**
      * Get all suggested friend data provider of current model
      * @return CActiveDataProvider
      */

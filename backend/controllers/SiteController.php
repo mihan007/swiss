@@ -59,9 +59,9 @@ class SiteController extends Controller
     public function actionSolution()
     {
         $profile = new Profile();
-        if (isset($_POST['Profile']))
+        if (isset($_GET['id']))
         {
-            $profile = $this->loadModel($_POST['Profile']);
+            $profile = $this->loadModel($_GET['id']);
             $this->render('solution', array(
                 'model' => $profile,
             ));
@@ -81,5 +81,16 @@ class SiteController extends Controller
         if (!$profile)
             throw new CException(404, 'Not found');
         return $profile;
+    }
+
+    /**
+     * dependency to cache block of friends user
+     * @return CDbCacheDependency
+     */
+    public function getCacheFriendDependency($id)
+    {
+        //we are using dependency to invalidate cache as only one of records will be changed/deleted
+        $dependency = new CDbCacheDependency('SELECT AVG(updated) FROM profile_has_friend WHERE id=\''.$id.'\'');
+        return $dependency;
     }
 }
