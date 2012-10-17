@@ -62,14 +62,8 @@ class SiteController extends Controller
         if (isset($_POST['Profile']))
         {
             $profile = $this->loadModel($_POST['Profile']);
-            $directFriends = $profile->directFriends;
-            $friendsOfFriends = $profile->friendsOfFriends;
-            $suggestedFriends = $profile->suggestedFriends;
             $this->render('solution', array(
                 'model' => $profile,
-                'directFriends' => $directFriends,
-                'friendsOfFriends' => $friendsOfFriends,
-                'suggestedFriends' => $suggestedFriends
             ));
         }
         else
@@ -81,7 +75,9 @@ class SiteController extends Controller
         if (!isset($row['id']))
             throw new CException(400, 'Bad request');
         $id = $row['id'];
-        $profile = Profile::model()->findByPk($id);
+        //to avoid extra queries
+        $dependency = new CDbCacheDependency('SELECT updated FROM profile WHERE id=\''.$id.'\'');
+        $profile = Profile::model()->cache(param('cache.duration'), $dependency)->findByPk($id);
         if (!$profile)
             throw new CException(404, 'Not found');
         return $profile;

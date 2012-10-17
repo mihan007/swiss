@@ -42,7 +42,19 @@ class ProfileHasFriend extends CActiveRecord
 		);
 	}
 
-	/**
+    public function behaviors(){
+        return array(
+            //we are using this mixin to automatically set/update time while updating db row of model
+            'CTimestampBehavior' => array(
+                'class' => 'zii.behaviors.CTimestampBehavior',
+                'createAttribute' => 'created',
+                'updateAttribute' => 'updated',
+                'setUpdateOnCreate' => true
+            )
+        );
+    }
+
+    /**
 	 * @return array relational rules.
 	 */
 	public function relations()

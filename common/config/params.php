@@ -22,23 +22,14 @@ $commonEnvParams = file_exists($commonEnvParamsFile) ? require($commonEnvParamsF
 
 return CMap::mergeArray(array(
 	// cache settings -if APC is not loaded, then use CDbCache
-	'cache.core' => extension_loaded('apc') ?
-		array(
-			'class' => 'CApcCache',
-		) :
-		array(
-			'class' => 'CDbCache',
-			'connectionID' => 'db',
-			'autoCreateCacheTable' => true,
-			'cacheTableName' => 'cache',
-		),
+	'cache.core' => array('class' => 'system.caching.CMemCache'),
 	'cache.content' => array(
 		'class' => 'CDbCache',
 		'connectionID' => 'db',
 		'autoCreateCacheTable' => true,
 		'cacheTableName' => 'cache',
 	),
-
+    'cache.duration' => 1000,
 	// url rules needed by CUrlManager
 	'url.rules' => array(
 		'<controller:\w+>/<id:\d+>' => '<controller>/view',
